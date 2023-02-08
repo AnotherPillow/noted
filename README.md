@@ -7,6 +7,12 @@ A basic notes/todo app made with electron.
 - Download the latest release from [here](https://github.com/anotherpillow/noted/releases) for your platform.
 - Run the executable.
 
+## Features
+
+- Create notes.
+- Multiple categories for notes.
+- Customizable theme.
+
 ## Development
 
 - Clone the repo.

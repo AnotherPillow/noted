@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
+
+body {
+    font-family: 'Kanit', sans-serif;
+}
+
+.colour_selection::-webkit-color-swatch {
+    border: 1px solid #000;
+}
+.colour_selection::-webkit-color-swatch-wrapper {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+#bg_colour {
+    position: absolute;
+    padding: 0;
+    outline: none;
+    border: none;
+    left:10px;
+    height:30px;
+    bottom: calc(50% - 15px);
+}
+#colour {
+    position: absolute;
+    padding: 0;
+    outline: none;
+    border: none;
+    left:70px;
+    height:30px;
+    bottom: calc(50% - 15px);
+}
+#new {
+    position: absolute;
+    outline: none;
+    border: none;
+    left:130px;
+    height:30px;
+    bottom: calc(50% - 15px);
+}
+.bottom_info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 75px;
+    background-color: #7b7b7b3e;
+    width: 100%;
+}
+#left_section {
+    position: absolute;
+    left: 10px;
+    /* top: 0; */
+    width:50%;
+    border-right: 1px solid #868686;
+}
+#right_section {
+    position: absolute;
+    left: 53vw;
+    width: 47vw;
+    /*border-left: 1px solid #000;
+     top: 0; 
+    text-align: left;*/
+}
+body {
+    overflow: hidden;
+}
+.parent_section {
+    /**allow scrolling */
+    overflow-y: scroll;
+    height: calc(100% - 85px);
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+.rmBtn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: #7d7d7d6d;
+}
+
+#main {
+    margin-top:0vh;
+    z-index: 1;
+    /* width:70vh; */
+}
+.hide {
+    display: none;
+}
+#frame {
+    z-index: 2;
+    display: inline-flex;
+    background-color: #00000033;
+}
+.title {
+    margin-top:0px;
+    font-family: 'Genos', sans-serif;
+    background-image: linear-gradient(left, darkorange, yellow);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+#frame>.left {
+    position: absolute;
+    top: 0;
+    left: 5;
+}
+#frame>.right {
+    position: absolute;
+    padding-right:5px;
+    right: 0;
+    top: 0;
+}
+#modal {
+    border: 1px solid #000;
+    position: absolute;
+    width: 40vw;
+    height: 40vh;
+    top: calc(50% - 20vh);
+    left: calc(50% - 20vw);
+    background-color: #00000033;
+}
+#modal_content {
+    margin:5px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Renderer</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+        <script src="renderer.js"></script>
+    </head>
+    <body>
+        <!-- <p>Hello World!</p> -->
+        <div id="frame">
+            <div class="left">
+                <h2 class="title">Noted</h2>
+            </div>
+            <div class="right">
+                <i class="fas fa-minus-square" onclick="minimise()"></i>
+                <i class="fas fa-square" onclick="maximise()"></i>
+                <i class="fas fa-times-circle" onclick="closeApp()"></i>
+            </div>
+        </div>
+
+        <div id="main">
+            <div id="left_section" class="parent_section">
+            </div>
+            <div id="right_section" class="parent_section">
+                Select a task to view its details
+            </div>
+            
+            <div class="bottom_info">
+                <input type="color" class="colour_selection" id="bg_colour" value="#FFFFFF" onchange="updateBackground(this.value)">
+                <input type="color" class="colour_selection" id="colour" value="#000000" onchange="updateColour(this.value)">
+    
+                <button id="new" onload="showModal()">Add task or section</button>
+            </div>
+        </div>
+        <div id="modal" style="display: none">
+            <div id="modal_content">
+                <input type="text" id="modal_input_sect" placeholder="Enter section name">
+                <button id="modal_button_sect" onclick="addSection()">Add section</button>
+                <br>
+                <label for="modal_input_task">Put the section name in the section input but do not press select to choose section.</label>
+                <input type="text" id="modal_input_task_name" placeholder="Enter task name">
+                <input type="text" id="modal_input_task_desc" placeholder="Enter task description">
+                <button id="modal_button_task" onclick="addTask()">Add task</button>
+            </div>
+
+        </div>
+    </body>
+</html>

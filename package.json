@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "electron": "^22.2.0",
+    "electron-packager": "^17.1.1"
+  },
+  "scripts": {
+    "dev": "electron .",
+    "build:win": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --prune=true --out=dist/ --electron-version=22.0.0 --icon=assets/text.ico",
+    "build:mac": "electron-packager . --overwrite --asar --platform=darwin --arch=x64 --prune=true --out=dist/ --electron-version=22.0.0 --icon=assets/text.icns"
+  },
+  "productName": "Noted",
+  "description": "A simple to-do list and notes app",
+  "author": "AnotherPillow",
+  "version": "0.1.0",
+  "name": "noted"
+}

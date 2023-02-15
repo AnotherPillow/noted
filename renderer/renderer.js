@@ -100,8 +100,12 @@ const addSection = (sectionName=undefined, rm=true) => {
     let i = 0;
     if (sectionName.length < 1) return;
 
-    while (config.sections[sectionName]) {
-        i++;
+    try {
+        while (config.sections[sectionName]) {
+            i++;
+        }
+    } catch (_) {
+        i = 0;
     }
     if (i > 0) sectionName += ` (${i})`;
 

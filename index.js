@@ -4,14 +4,16 @@ const fs = require('fs');
 const configPath = path.join(app.getPath('userData'), 'config.json');
 let overrideConfig = false;
 
-if (!fs.existsSync(configPath) || overrideConfig) 
-    fs.writeFileSync(configPath, JSON.stringify({
+let config = require(configPath) || {}
+
+if (!fs.existsSync(configPath) || overrideConfig || !config.sections)  {
+    config = {
         background: '#FFFFFF',
         colour: '#000000',
         sections: {}
-    }));
-    
-let config = require(configPath)
+    }
+    fs.writeFileSync(configPath, JSON.stringify(config));
+}
 
 var win;
 

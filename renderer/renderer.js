@@ -45,7 +45,7 @@ const addSections = (sections) => {
         for (j in section.tasks) {
             let task = section.tasks[j];
             let taskText = document.createElement('p');
-            taskText.innerText = task.name;
+            taskText.innerHTML = task.name;
             taskText.setAttribute('onclick',`showInfoOnTask(JSON.parse(\`${JSON.stringify(task)}\`), '${i}', ${j})`)
             sectionDiv.appendChild(taskText);    
         }
@@ -53,6 +53,7 @@ const addSections = (sections) => {
     }
 }
 const showInfoOnTask = (task,i,j, btn=true) => {
+    console.log({task,i,j});
     // if (del) {
     //     let btn = document.querySelector('.rmBtn');
     //     console.log(btn);
@@ -61,10 +62,10 @@ const showInfoOnTask = (task,i,j, btn=true) => {
     let infoDiv = document.querySelector('#right_section');
     infoDiv.innerHTML = '';
     let title = document.createElement('h2');
-    title.innerText = task.name;
+    title.innerHTML = task.name;
     infoDiv.appendChild(title);
-    let desc = document.createElement('p');
-    desc.innerText = task.description;
+    let desc = document.createElement('textarea');
+    desc.innerHTML = task.description.replace(/\$nl\$/g,'\n');
     infoDiv.appendChild(desc);
     
     if (btn) {
@@ -93,9 +94,18 @@ const showInfoOnTask = (task,i,j, btn=true) => {
             }
         }
         infoDiv.appendChild(rmBtn);
+
+        let svBtn = document.createElement('button');
+        svBtn.innerText = 'Save';
+        svBtn.classList.add('svBtn');
+        svBtn.onclick = () => {
+            updateTask(i,j);
+        }
+        infoDiv.appendChild(svBtn);
     }
 }
 const addSection = (sectionName=undefined, rm=true) => {
+    if (!config.sections) config.sections = {};
     if (!sectionName) sectionName = document.querySelector('#modal_input_sect').value;
     let i = 0;
     if (sectionName.length < 1) return;
@@ -118,12 +128,20 @@ const addSection = (sectionName=undefined, rm=true) => {
         destroyModal();
     }
 }
+
+const updateTask = (i,j) => {
+    const newText = document.querySelector('#right_section textarea').value.replace(/\n/g,'$nl$');
+    
+    config.sections[i].tasks[j].description = newText;
+    updateConfig();
+}
+
 const addTask = () => {
     let sectionName = document.querySelector('#modal_input_sect').value.trim();
     if (!config.sections[sectionName]) 
         addSection(sectionName,false);
     let taskName = document.querySelector('#modal_input_task_name').value;
-    let taskDesc = document.querySelector('#modal_input_task_desc').value;
+    let taskDesc = document.querySelector('#modal_input_task_desc').value.replace(/\n/g,'$nl$');
     if (taskName.length < 1 || taskDesc.length < 1) return;
     config.sections[sectionName].tasks.push({
         name: taskName,

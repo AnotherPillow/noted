@@ -80,6 +80,12 @@ body {
     bottom: 10px;
     background-color: #7d7d7d6d;
 }
+.svBtn {
+    position: absolute;
+    right: 80px;
+    bottom: 10px;
+    background-color: #7d7d7d6d;
+}
 
 #main {
     margin-top:0vh;
@@ -97,7 +103,8 @@ body {
 .title {
     margin-top:0px;
     font-family: 'Genos', sans-serif;
-    background-image: linear-gradient(left, darkorange, yellow);
+    background-image: linear-gradient(to left, darkorange, yellow);
+    
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -125,4 +132,18 @@ body {
 }
 #modal_content {
     margin:5px;
+}
+textarea {
+    /*just make it look as if it was a <p>
+    but it's actually a <textarea> */
+    border: none;
+    background-color: transparent;
+    resize: none; 
+    overflow: hidden;
+    outline: none;
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    color: #000;
+    width: 100%;
+    height: 100%;
 }

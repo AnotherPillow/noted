@@ -1,4 +1,4 @@
 /node_modules
 /dist
-t.json
+t*json
 /assets/temp

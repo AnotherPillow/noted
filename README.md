@@ -12,6 +12,7 @@ A basic notes/todo app made with electron.
 - Create notes.
 - Multiple categories for notes.
 - Customizable theme.
+- Edit notes.
 
 ## Development
 

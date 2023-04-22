@@ -1,4 +1,5 @@
 let config = {};
+var converter = new showdown.Converter();
 
 const updateBackground = col => {
     document.querySelector("body").style.background = col;
@@ -67,11 +68,16 @@ const showInfoOnTask = (task,i,j, btn=true) => {
     let desc = document.createElement('textarea');
     desc.innerHTML = task.description.replace(/\$nl\$/g,'\n');
     infoDiv.appendChild(desc);
+
+    let preview = document.createElement('div');
+    preview.classList.add('preview');
+    preview.style.display = 'none';
+    infoDiv.appendChild(preview);
     
     if (btn) {
         let rmBtn = document.createElement('button');
         rmBtn.innerText = 'Remove';
-        rmBtn.classList.add('rmBtn');
+        rmBtn.classList.add('rmBtn', 'btn');
         rmBtn.onclick = () => {
             if (j !== 0) {
                 console.log(i,j)
@@ -97,11 +103,25 @@ const showInfoOnTask = (task,i,j, btn=true) => {
 
         let svBtn = document.createElement('button');
         svBtn.innerText = 'Save';
-        svBtn.classList.add('svBtn');
+        svBtn.classList.add('svBtn', 'btn');
         svBtn.onclick = () => {
             updateTask(i,j);
         }
         infoDiv.appendChild(svBtn);
+
+        let mdBtn = document.createElement("button");
+        mdBtn.innerHTML = 'Edit/View'
+        mdBtn.classList.add('mdBtn', 'btn');
+        let mdEditMode = true;
+        mdBtn.onclick = () => {
+            swapMDHTML(i,j, mdEditMode);
+            mdEditMode = !mdEditMode;
+
+        }
+
+        infoDiv.appendChild(mdBtn);
+
+
     }
 }
 const addSection = (sectionName=undefined, rm=true) => {
@@ -183,3 +203,24 @@ document.addEventListener('DOMContentLoaded', () => {
         modalShown = !modalShown;
     }
 })
+
+const swapMDHTML = (i,j, mdEditMode) => {
+    const textarea = document.querySelector('#right_section textarea')
+    const preview = document.querySelector('.preview');
+    const rightsection = document.querySelector('#right_section');
+    rightsection.style = `--md: "${mdEditMode ? 'Viewing' : 'Editing'}";`;
+
+    if (mdEditMode) {
+        preview.style.display = 'block';
+        textarea.style = 'display:none; position:absolute; top:-9999px; left:-9999px;';
+    } else {
+        preview.style.display = 'none';
+        textarea.style = 'display:block;'
+    }
+
+    const html = converter.makeHtml(textarea.value);
+
+    preview.innerHTML = html;
+
+
+}

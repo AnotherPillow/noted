@@ -46,6 +46,7 @@ body {
     height: 75px;
     background-color: #7b7b7b3e;
     width: 100%;
+    z-index: 3;
 }
 #left_section {
     position: absolute;
@@ -74,23 +75,20 @@ body {
     width: 0px;
     background: transparent;
 }
-.rmBtn {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    background-color: #7d7d7d6d;
-}
-.svBtn {
-    position: absolute;
-    right: 80px;
-    bottom: 10px;
-    background-color: #7d7d7d6d;
-}
-.mdBtn {
-    position: absolute;
-    right:150px;
+.btn {
+    position: fixed;
     bottom:10px;
     background-color: #7d7d7d6d;
+    z-index: 5;
+}
+.rmBtn {
+    right: 10px;
+}
+.svBtn {
+    right: 80px;
+}
+.mdBtn {
+    right:130px;
 }
 
 #main {
@@ -139,7 +137,7 @@ body {
 #modal_content {
     margin:5px;
 }
-textarea {
+textarea, .preview {
     /*just make it look as if it was a <p>
     but it's actually a <textarea> */
     border: none;
@@ -149,7 +147,19 @@ textarea {
     outline: none;
     font-family: 'Kanit', sans-serif;
     font-size: 18px;
-    color: #000;
+    color: inherit;
     width: 100%;
     height: 100%;
+}
+
+#right_section>h2::after {
+    content: var(--md);
+    display: inline-block;
+    font-size: 0.6em;
+
+    /*forec it to be at the furthest right */
+    position: absolute;
+    right: 5px;
+
+    
 }

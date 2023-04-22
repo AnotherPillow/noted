@@ -13,6 +13,8 @@ A basic notes/todo app made with electron.
 - Multiple categories for notes.
 - Customizable theme.
 - Edit notes.
+- Supports markdown.
+- Switch between editor and preview mode.
 
 ## Development
 

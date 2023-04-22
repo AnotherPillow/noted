@@ -102,6 +102,18 @@ const showInfoOnTask = (task,i,j, btn=true) => {
             updateTask(i,j);
         }
         infoDiv.appendChild(svBtn);
+
+        let mdBtn = document.createElement("button");
+        mdBtn.innerHTML = 'Edit/View'
+        mdBtn.classList.add('mdBtn');
+        let mdOn = false;
+        mdBtn.onclick = () => {
+            swapMDHTML(i,j, mdOn);
+        }
+
+        infoDiv.appendChild(mdBtn);
+
+
     }
 }
 const addSection = (sectionName=undefined, rm=true) => {
@@ -183,3 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
         modalShown = !modalShown;
     }
 })
+
+const swapMDHTML = (i,j, mdOn) => {
+    const newText = document.querySelector('#right_section textarea').value.replace(/\n/g,'$nl$');
+
+
+
+
+
+
+}

@@ -47,13 +47,21 @@ const addSections = (sections) => {
             let task = section.tasks[j];
             let taskText = document.createElement('p');
             taskText.innerHTML = task.name;
-            taskText.setAttribute('onclick',`showInfoOnTask(JSON.parse(\`${JSON.stringify(task)}\`), '${i}', ${j})`)
+            let ecapsed_task = JSON.stringify(task).replace(/`/g,'$bt$');
+            taskText.setAttribute('onclick',`showInfoOnTask(\`${ecapsed_task}\`, '${i}', ${j})`)
+            //taskText.setAttribute('onclick',`showInfoOnTask(JSON.parse(\`${JSON.stringify(task).replace(/`/g,'$bt$')}\`.replace(/\$bt\$/g,'\`')), '${i}', ${j})`)
+            
             sectionDiv.appendChild(taskText);    
         }
         parentDiv.appendChild(sectionDiv);
     }
 }
-const showInfoOnTask = (task,i,j, btn=true) => {
+const showInfoOnTask = (taskstr,i,j, btn=true) => {
+    const task = {}
+    if (typeof taskstr == 'string') {
+        task = JSON.parse(taskstr.replace(/\$bt\$/g,'`'));
+    }
+        task = taskstr;
     console.log({task,i,j});
     // if (del) {
     //     let btn = document.querySelector('.rmBtn');

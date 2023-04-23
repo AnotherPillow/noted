@@ -60,7 +60,7 @@ const showInfoOnTask = (taskstr,i,j, btn=true) => {
     let task = {}
     if (typeof taskstr == 'string') {
         task = JSON.parse(taskstr.replace(/\$bt\$/g,'`'));
-    }
+    } else
         task = taskstr;
     console.log({task,i,j});
     // if (del) {

@@ -57,7 +57,7 @@ const addSections = (sections) => {
     }
 }
 const showInfoOnTask = (taskstr,i,j, btn=true) => {
-    const task = {}
+    let task = {}
     if (typeof taskstr == 'string') {
         task = JSON.parse(taskstr.replace(/\$bt\$/g,'`'));
     }

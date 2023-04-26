@@ -101,8 +101,11 @@ body {
 }
 #frame {
     z-index: 2;
-    display: inline-flex;
-    background-color: #00000033;
+    /* display: inline-flex; */
+    /* background-color: #00000033; */
+    height:25px;
+    width: 100%;
+    -webkit-app-region: drag;
 }
 .title {
     margin-top:0px;

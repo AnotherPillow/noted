@@ -145,8 +145,7 @@ textarea, .preview {
     but it's actually a <textarea> */
     border: none;
     background-color: transparent;
-    resize: none; 
-    overflow: hidden;
+    resize: none;
     outline: none;
     font-family: 'Kanit', sans-serif;
     font-size: 18px;
